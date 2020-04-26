@@ -39,7 +39,8 @@ cd build
 
 # --------------------------------------------------------------------------------
 cmake ../ -DCMAKE_INSTALL_PREFIX=/root/serverlegion
-
+# OR
+cmake ../ -DCMAKE_INSTALL_PREFIX=/root/serverlegion -DCMAKE_C_FLAGS="-m64 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -g3 -ggdb3 -msse3 -fno-delete-null-pointer-checks -fno-strict-aliasing -frename-registers -rdynamic" -DCMAKE_CXX_FLAGS="-m64 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -g3 -ggdb3 -msse3 -fno-delete-null-pointer-checks -fno-strict-aliasing -frename-registers -rdynamic" -DCMAKE_BUILD_TYPE=Release -DWITH_COREDEBUG=0 -DTOOLS=1 -DWITH_WARNINGS=0
 # --------------------------------------------------------------------------------
 make -j 4
 make install
