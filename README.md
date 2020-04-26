@@ -4,6 +4,19 @@
 # REQUREMENTS
 
 boost_1_60_0, openssl-1.0.0, libssl1.0-dev
+```shell
+wget https://www.openssl.org/source/openssl-1.0.0.tar.gz
+tar -xzvf openssl-1.0.0.tar.gz
+cd openssl-1.0.0
+sudo ./config --prefix=/usr
+sudo make
+sudo make test
+sudo make install_sw
+
+openssl version -v 
+```
+
+# COMPILE SERVER
 
 ```shell
 #INSTALL dependencies:
@@ -39,7 +52,7 @@ cd build
 
 # --------------------------------------------------------------------------------
 cmake ../ -DCMAKE_INSTALL_PREFIX=/root/serverlegion
-# OR
+# OR (extra config):
 cmake ../ -DCMAKE_INSTALL_PREFIX=/root/serverlegion -DCMAKE_C_FLAGS="-m64 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -g3 -ggdb3 -msse3 -fno-delete-null-pointer-checks -fno-strict-aliasing -frename-registers -rdynamic" -DCMAKE_CXX_FLAGS="-m64 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -g3 -ggdb3 -msse3 -fno-delete-null-pointer-checks -fno-strict-aliasing -frename-registers -rdynamic" -DCMAKE_BUILD_TYPE=Release -DWITH_COREDEBUG=0 -DTOOLS=1 -DWITH_WARNINGS=0
 # --------------------------------------------------------------------------------
 make -j 4
