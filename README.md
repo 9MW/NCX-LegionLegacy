@@ -24,6 +24,8 @@ openssl version -v
 apt update
 apt install git clang cmake make gcc g++ libmariadbclient-dev libbz2-dev libreadline-dev libncurses-dev mariadb-server p7zip libmariadb-client-lgpl-dev-compat
 
+apt install libboost1.67-all-dev
+
 apt install libasio-dev
 apt install libzmq3-dev 
 apt install libelf-dev libdwarf-dev
