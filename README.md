@@ -62,8 +62,50 @@ make install
 
 # --------------------------------------------------------------------------------
 
-to be continue.........
+```
+
+# DATABASES
+
+```shell
+# --------------------------------------------------------------------------------
+#SQL INSTALL & SETUP
+
+sudo apt update
+sudo apt install mariadb-server mariadb-client
+
+nano /etc/mysql/mariadb.conf.d/50-server.cnf
+# change these lines to:
+
+bind-address            = 0.0.0.0
+innodb_strict_mode      = 0
+
+#.............................................
+sudo mysql -u root -p mysql
+
+update user set plugin=' ' where user='root';
+SET PASSWORD FOR root@localhost = PASSWORD('your_root_password');
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_root_password' WITH GRANT OPTION;
+flush privileges;
+exit
+
+#.............................................
+# NOW IMPORT DATABASES
+
+mysql -u root -p database < file.sql
+
+#.............................................
+# NOW INSTALL PHPMYADMNIN:
+
+apt-get install php-mbstring php-gettext
+
+sudo add-apt-repository ppa:phpmyadmin/ppa
+sudo apt-get update
+sudo apt-get install phpmyadmin
 
 
+# Web server to reconfigure automatically: <-- apache2
+# Configure database for phpmyadmin with dbconfig-common? <-- No
 
+# --------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------
 ```
