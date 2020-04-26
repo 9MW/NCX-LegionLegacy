@@ -14,6 +14,24 @@ sudo make test
 sudo make install_sw
 
 openssl version -v 
+
+# --------------------------------------------------------------------------------
+# BOOST 1.60:
+sudo apt-get -y install build-essential g++ python-dev autotools-dev libicu-dev libbz2-dev
+wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.gz
+tar -zxvf boost_1_60_0.tar.gz
+cd boost_1_60_0
+
+# get the no of cpucores to make faster
+cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'`
+echo "Available CPU cores: "$cpuCores
+./bootstrap.sh  # this will generate ./b2
+sudo ./b2 --with=all -j $cpuCores install
+
+# Now let's check the installed version
+
+cat /usr/local/include/boost/version.hpp | grep "BOOST_LIB_VERSION"
+
 ```
 
 # COMPILE SERVER
